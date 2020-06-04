@@ -3,18 +3,18 @@
 #include <string>
 #include <memory>
 #include <Application/Menu/IOhandler.hpp>
-#include <Application/Menu/ActionStrategy.hpp>
+#include <Application/Menu/MstSubmenu/MstStrategy.hpp>
 
 
 // instance of Facade design pattern
-// represents whole application interface
+// represents MST submenu
 
 
-class ApplicationFacade
+class MstFacade
 {
     public:
-    ApplicationFacade(const std::string& menuContent);
-    ~ApplicationFacade() = default;
+    MstFacade(const std::string& menuContent);
+    ~MstFacade() = default;
 
     void run();
     void printMenu();
@@ -24,5 +24,5 @@ class ApplicationFacade
 
     private:
     IOhandler ioHandler;
-    ActionStrategy actionStrategy;
+    MstStrategy mstStrategy;
 };

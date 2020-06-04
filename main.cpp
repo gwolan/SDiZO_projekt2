@@ -14,9 +14,11 @@
 int main()
 {
     std::string menuContent(std::string("\n====================\n") +
-                            std::string("SDiZO Projekt nr 2: Algorytmy znajdowania MST i najkrótszych ścieżek w grafach\n") +
+                            std::string("SDiZO Projekt nr 2: Algorytmy znajdowania MST i najkrotszych sciezek w grafach\n") +
                             std::string("Autor: Grzegorz Wolanski\n\n") +
                             std::string("Menu:\n") +
+                            std::string("1. Algorytm znajdowania MST w grafie.\n") +
+                            std::string("2. Algorytm znajdowania najkrotszej sciezki w grafie.\n") +
                             std::string("0. Wyjscie.\n\n") +
                             std::string("Wybor: "));
 

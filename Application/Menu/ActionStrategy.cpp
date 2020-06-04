@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <Application/Menu/ActionStrategy.hpp>
 #include <Application/Menu/Actions/ExitProgram.hpp>
+#include <Application/Menu/Actions/MstSubmenu.hpp>
 
 
 ActionStrategy::ActionStrategy()
@@ -26,6 +27,15 @@ bool ActionStrategy::selectAction(std::string choice)
         case 0:
         {
             selectedAction = std::make_unique<ExitProgram>("Wyjście z programu");
+        }
+        break;
+        case 1:
+        {
+            selectedAction = std::make_unique<MstSubmenu>("Algorytm znajdowania MST w grafie");
+        }
+        break;
+        case 2:
+        {
         }
         break;
         default:
