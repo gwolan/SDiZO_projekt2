@@ -3,6 +3,7 @@
 #include <Application/Menu/ActionStrategy.hpp>
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/Actions/MstSubmenu.hpp>
+#include <Application/Menu/Actions/ShortestPathsSubmenu.hpp>
 
 
 ActionStrategy::ActionStrategy()
@@ -31,11 +32,12 @@ bool ActionStrategy::selectAction(std::string choice)
         break;
         case 1:
         {
-            selectedAction = std::make_unique<MstSubmenu>("Algorytm znajdowania MST w grafie");
+            selectedAction = std::make_unique<MstSubmenu>("Algorytmy znajdowania MST w grafie");
         }
         break;
         case 2:
         {
+            selectedAction = std::make_unique<ShortestPathsSubmenu>("Algorytmy znajdowania najkrotszych sciezek w grafie");
         }
         break;
         default:

@@ -8,7 +8,7 @@ MstSubmenu::MstSubmenu(const std::string& actionName)
 
 void MstSubmenu::run()
 {
-    std::string menuContent(std::string("Menu MST:\n") +
+    std::string menuContent(std::string("\nMenu MST:\n") +
                             std::string("1. Wczytaj graf z pliku.\n") +
                             std::string("2. Wygeneruj losowy graf.\n") +
                             std::string("3. Wyswietl graf.\n") +
