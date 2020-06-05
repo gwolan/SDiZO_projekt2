@@ -60,6 +60,26 @@ std::vector<GraphList::VertexWithWeight> GraphList::getVertexNeighbours(uint32_t
     return neighbours;
 }
 
+std::vector<Edge> GraphList::getEdgesList()
+{
+    std::vector<Edge> edges;
+
+    for(auto& row : graphList)
+    {
+        for(auto& neighbour : row.second)
+        {
+            Edge edge;
+            edge.start = row.first;
+            edge.end = neighbour.first;
+            edge.weight = neighbour.second;
+
+            edges.push_back(edge);
+        }
+    }
+
+    return edges;
+}
+
 uint32_t GraphList::getVertexCount()
 {
     return verticies.size();

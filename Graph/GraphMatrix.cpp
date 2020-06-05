@@ -55,6 +55,29 @@ std::vector<GraphMatrix::VertexWithWeight> GraphMatrix::getVertexNeighbours(uint
     return neighbours;
 }
 
+std::vector<Edge> GraphMatrix::getEdgesList()
+{
+    std::vector<Edge> edges;
+
+    for(uint32_t startingVertex = 0; startingVertex < vertexCount; ++startingVertex)
+    {
+        for(uint32_t endingVertex = 0; endingVertex < vertexCount; ++endingVertex)
+        {
+            if(graphMatrix[startingVertex][endingVertex] != NO_EDGE)
+            {
+                Edge edge;
+                edge.start = startingVertex;
+                edge.end = endingVertex;
+                edge.weight = graphMatrix[startingVertex][endingVertex];
+
+                edges.push_back(edge);
+            }
+        }
+    }
+
+    return edges;
+}
+
 uint32_t GraphMatrix::getVertexCount()
 {
     return vertexCount;
