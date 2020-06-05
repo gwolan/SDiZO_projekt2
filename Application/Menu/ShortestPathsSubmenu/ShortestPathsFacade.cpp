@@ -2,8 +2,10 @@
 
 
 ShortestPathsFacade::ShortestPathsFacade(const std::string& menuContent)
-    : ioHandler(menuContent)
-    , shortestPathsStrategy()
+    : graphMatrix(nullptr)
+    , graphList(nullptr)
+    , ioHandler(menuContent)
+    , shortestPathsStrategy(graphMatrix, graphList)
 { }
 
 void ShortestPathsFacade::printMenu()

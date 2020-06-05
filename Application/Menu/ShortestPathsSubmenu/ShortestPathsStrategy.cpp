@@ -4,8 +4,10 @@
 #include <Application/Menu/Actions/ExitProgram.hpp>
 
 
-ShortestPathsStrategy::ShortestPathsStrategy()
+ShortestPathsStrategy::ShortestPathsStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType, std::unique_ptr<GraphList>& graphListType)
     : selectedAction(nullptr)
+    , graphMatrix(graphMatrixType)
+    , graphList(graphListType)
 { }
 
 void ShortestPathsStrategy::executeAction()

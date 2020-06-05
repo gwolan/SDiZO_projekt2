@@ -2,8 +2,10 @@
 
 
 MstFacade::MstFacade(const std::string& menuContent)
-    : ioHandler(menuContent)
-    , mstStrategy()
+    : graphMatrix(nullptr)
+    , graphList(nullptr)
+    , ioHandler(menuContent)
+    , mstStrategy(graphMatrix, graphList)
 { }
 
 void MstFacade::printMenu()
