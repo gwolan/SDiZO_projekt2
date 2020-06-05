@@ -3,6 +3,7 @@
 #include <Application/Menu/MstSubmenu/MstStrategy.hpp>
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/MstSubmenu/SubActions/ReadGraphFromFile.hpp>
+#include <Application/Menu/MstSubmenu/SubActions/DisplayGraph.hpp>
 
 
 MstStrategy::MstStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType, std::unique_ptr<GraphList>& graphListType)
@@ -28,12 +29,17 @@ bool MstStrategy::selectAction(std::string choice)
     {
         case 0:
         {
-            selectedAction = std::make_unique<ExitProgram>("Powrót do glownego Menu");
+            selectedAction = std::make_unique<ExitProgram>("Powrot do glownego Menu");
         }
         break;
         case 1:
         {
             selectedAction = std::make_unique<ReadGraphFromFile>("Wczytaj graf z pliku", graphMatrix, graphList);
+        }
+        break;
+        case 3:
+        {
+            selectedAction = std::make_unique<DisplayGraph>("Wyswietl graf", graphMatrix, graphList);
         }
         break;
         default:
