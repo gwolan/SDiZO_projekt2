@@ -89,7 +89,14 @@ void GraphMatrix::displayGraph()
     {
         for(auto& cell : row)
         {
-            std::cout << cell << '\t';
+            if(cell != NO_EDGE)
+            {
+                std::cout << cell << '\t';
+            }
+            else
+            {
+                std::cout << 'X' << '\t';
+            }
         }
 
         std::cout << std::endl;

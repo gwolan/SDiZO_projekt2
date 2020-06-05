@@ -11,7 +11,7 @@ class BaseAction
 {
     public:
     BaseAction(const std::string& actionName);
-    ~BaseAction() = default;
+    virtual ~BaseAction() = default;
 
     virtual void run() = 0;
     std::string getActionName();
