@@ -17,6 +17,7 @@ message("-- Used CXX compiler path: ${CMAKE_CXX_COMPILER}")
 set(SOURCE_DIRECTORIES
         Application/
         Containers/
+        Graph/
         Miscellanous/
    )
 
