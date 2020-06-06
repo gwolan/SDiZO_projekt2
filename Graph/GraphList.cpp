@@ -44,16 +44,21 @@ int32_t GraphList::getWeight(uint32_t startingVertex, uint32_t endVertex)
     return GraphList::NO_EDGE;
 }
 
-std::vector<GraphList::VertexWithWeight> GraphList::getVertexNeighbours(uint32_t vertex)
+std::vector<Edge> GraphList::getVertexNeighbours(uint32_t vertex)
 {
-    std::vector<VertexWithWeight> neighbours;
+    std::vector<Edge> neighbours;
     auto it = std::find_if(graphList.begin(), graphList.end(), VertexOnListFinder(vertex));
 
     if(it != graphList.end())
     {
         for(auto& neighbour : it->second)
         {
-            neighbours.push_back(neighbour);
+            Edge edgeToNeighbour;
+            edgeToNeighbour.start = vertex;
+            edgeToNeighbour.end = neighbour.first;
+            edgeToNeighbour.weight = neighbour.second;
+
+            neighbours.push_back(edgeToNeighbour);
         }
     }
 

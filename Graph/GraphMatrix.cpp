@@ -39,16 +39,20 @@ int32_t GraphMatrix::getWeight(uint32_t row, uint32_t column)
     }
 }
 
-std::vector<GraphMatrix::VertexWithWeight> GraphMatrix::getVertexNeighbours(uint32_t vertex)
+std::vector<Edge> GraphMatrix::getVertexNeighbours(uint32_t vertex)
 {
-    std::vector<VertexWithWeight> neighbours;
+    std::vector<Edge> neighbours;
 
     for(uint32_t neighbour = 0; neighbour < vertexCount; ++neighbour)
     {
         if(graphMatrix[vertex][neighbour] != NO_EDGE)
         {
-            VertexWithWeight neighbourWithWeight(neighbour, graphMatrix[vertex][neighbour]);
-            neighbours.push_back(neighbourWithWeight);
+            Edge edgeToNeighbour;
+            edgeToNeighbour.start = vertex;
+            edgeToNeighbour.end = neighbour;
+            edgeToNeighbour.weight = graphMatrix[vertex][neighbour];
+
+            neighbours.push_back(edgeToNeighbour);
         }
     }
 

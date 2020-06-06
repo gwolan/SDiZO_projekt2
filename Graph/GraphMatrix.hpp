@@ -20,7 +20,7 @@ class GraphMatrix
 
     void addEdge(uint32_t row, uint32_t column, uint32_t weight);
     int32_t getWeight(uint32_t row, uint32_t column);
-    std::vector<VertexWithWeight> getVertexNeighbours(uint32_t vertex);
+    std::vector<Edge> getVertexNeighbours(uint32_t vertex);
     std::vector<Edge> getEdgesList();
     uint32_t getVertexCount();
     void displayGraph();

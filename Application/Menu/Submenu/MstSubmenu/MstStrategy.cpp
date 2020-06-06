@@ -4,6 +4,7 @@
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/Submenu/MstSubmenu/SubActions/ReadNonOrientedGraphFromFile.hpp>
 #include <Application/Menu/Submenu/MstSubmenu/SubActions/GenerateNonOrientedRandomGraph.hpp>
+#include <Application/Menu/Submenu/MstSubmenu/SubActions/PerformPrim.hpp>
 #include <Application/Menu/Submenu/SharedSubActions/DisplayGraph.hpp>
 
 
@@ -46,6 +47,11 @@ bool MstStrategy::selectAction(std::string choice)
         case 3:
         {
             selectedAction = std::make_unique<DisplayGraph>("Wyswietl graf", graphMatrix, graphList);
+        }
+        break;
+        case 4:
+        {
+            selectedAction = std::make_unique<PerformPrim>("Wykonaj algorytm Prima", graphMatrix, graphList);
         }
         break;
         default:
