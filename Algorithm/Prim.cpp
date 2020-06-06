@@ -2,11 +2,16 @@
 #include <Algorithm/Prim.hpp>
 
 
-Prim::PathCostAndPath Prim::performPrim(std::unique_ptr<Graph>& graph, uint32_t startingVertex)
+void Prim::reset()
 {
-    // reset queue
+    // reset variables
     edgeQueue = EdgeQueue();
     visited.clear();
+}
+
+Prim::PathCostAndPath Prim::performPrim(std::unique_ptr<Graph>& graph, uint32_t startingVertex)
+{
+    reset();
 
     // set flags
     visited.resize(graph->getVertexCount(), false);

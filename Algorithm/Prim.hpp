@@ -20,6 +20,7 @@ class Prim
     ~Prim() = default;
 
     PathCostAndPath performPrim(std::unique_ptr<Graph>& graph, uint32_t startingVertex);
+    void reset();
 
 
     private:

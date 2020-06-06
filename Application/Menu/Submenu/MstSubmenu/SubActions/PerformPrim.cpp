@@ -26,6 +26,8 @@ void PerformPrim::run()
 
 PerformPrim::PrimResults PerformPrim::runPrimForMatrix()
 {
+    prim.reset();
+
     timer.start();
     auto result = prim.performPrim(graphMatrix, 0);
     timer.stop();
@@ -35,6 +37,8 @@ PerformPrim::PrimResults PerformPrim::runPrimForMatrix()
 
 PerformPrim::PrimResults PerformPrim::runPrimForList()
 {
+    prim.reset();
+
     timer.start();
     auto result = prim.performPrim(graphList, 0);
     timer.stop();
