@@ -5,12 +5,12 @@
 #include <Graph/Utils/Edge.hpp>
 
 
-class GenerateRandomGraph : public BaseSubAction
+class GenerateNonOrientedRandomGraph : public BaseSubAction
 {
     public:
-    GenerateRandomGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                       std::unique_ptr<GraphList>& graphListType);
-    ~GenerateRandomGraph() = default;
+    GenerateNonOrientedRandomGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
+                                                                  std::unique_ptr<GraphList>& graphListType);
+    ~GenerateNonOrientedRandomGraph() = default;
 
     void run();
 

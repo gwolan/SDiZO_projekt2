@@ -4,12 +4,12 @@
 #include <Application/Menu/Actions/BaseSubAction.hpp>
 
 
-class ReadGraphFromFile : public BaseSubAction
+class ReadOrientedGraphFromFile : public BaseSubAction
 {
     public:
-    ReadGraphFromFile(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                     std::unique_ptr<GraphList>& graphListType);
-    ~ReadGraphFromFile() = default;
+    ReadOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
+                                                             std::unique_ptr<GraphList>& graphListType, uint32_t& beginVertex);
+    ~ReadOrientedGraphFromFile() = default;
 
     void run();
 
@@ -18,10 +18,9 @@ class ReadGraphFromFile : public BaseSubAction
     void openFile();
     void readEdgesCountIfPossible();
     void readVertexCountIfPossible();
+    void readStartingVertexIfPossible();
     Edge readEdge();
     void fillGraphs();
-    void addEdgeToMatrix(Edge& edge);
-    void addEdgeToList(Edge& edge);
     void displayGraphs();
 
     std::string fileContent;
@@ -29,4 +28,5 @@ class ReadGraphFromFile : public BaseSubAction
     std::ifstream file;
     uint32_t edgesCount;
     uint32_t vertexCount;
+    uint32_t& startingVertex;
 };

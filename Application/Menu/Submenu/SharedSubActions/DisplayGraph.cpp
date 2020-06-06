@@ -1,5 +1,5 @@
 #include <iostream>
-#include <Application/Menu/MstSubmenu/SubActions/DisplayGraph.hpp>
+#include <Application/Menu/Submenu/SharedSubActions/DisplayGraph.hpp>
 
 
 DisplayGraph::DisplayGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,

@@ -1,5 +1,5 @@
 #include <Application/Menu/Actions/MstSubmenu.hpp>
-#include <Application/Menu/MstSubmenu/MstFacade.hpp>
+#include <Application/Menu/Submenu/MstSubmenu/MstFacade.hpp>
 
 
 MstSubmenu::MstSubmenu(const std::string& actionName)

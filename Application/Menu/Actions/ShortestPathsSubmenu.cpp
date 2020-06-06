@@ -1,5 +1,5 @@
 #include <Application/Menu/Actions/ShortestPathsSubmenu.hpp>
-#include <Application/Menu/ShortestPathsSubmenu/ShortestPathsFacade.hpp>
+#include <Application/Menu/Submenu/ShortestPathsSubmenu/ShortestPathsFacade.hpp>
 
 
 ShortestPathsSubmenu::ShortestPathsSubmenu(const std::string& actionName)

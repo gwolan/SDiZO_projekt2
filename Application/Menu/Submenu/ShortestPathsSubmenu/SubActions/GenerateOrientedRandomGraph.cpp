@@ -3,19 +3,20 @@
 #include <random>
 #include <algorithm>
 #include <utility>
-#include <Application/Menu/MstSubmenu/SubActions/GenerateRandomGraph.hpp>
+#include <Application/Menu/Submenu/ShortestPathsSubmenu/SubActions/GenerateOrientedRandomGraph.hpp>
 #include <Graph/Utils/GraphCharacteristicsCalculator.hpp>
 #include <Miscellanous/Dice.hpp>
 
 
-GenerateRandomGraph::GenerateRandomGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                                        std::unique_ptr<GraphList>& graphListType)
+GenerateOrientedRandomGraph::GenerateOrientedRandomGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
+                                                                                        std::unique_ptr<GraphList>& graphListType, uint32_t& beginVertex)
     : BaseSubAction(actionName, graphMatrixType, graphListType)
     , vertexCount(0)
     , graphDensity(0.0)
+    , startingVertex(beginVertex)
 { }
 
-void GenerateRandomGraph::run()
+void GenerateOrientedRandomGraph::run()
 {
     readVerticiesAndDensity();
     GraphCharacteristicsCalculator graphCharacteristics(vertexCount, graphDensity);
@@ -32,8 +33,8 @@ void GenerateRandomGraph::run()
         std::cout << "Wygenerowano graf:" << std::endl;
         std::cout << "- gestosc: " << graphDensity << "%" << std::endl;
         std::cout << "- ilosc wierzcholkow: " << vertexCount << std::endl;
-        std::cout << "- ilosc krawedzi: " << nonOrientedGraphEdgeCount(graphMatrix->getEdgesList()) << std::endl;
-        std::cout << "- ilosc krawedzi: " << nonOrientedGraphEdgeCount(graphList->getEdgesList()) << std::endl;
+        std::cout << "- wierzcholek startowy: " << startingVertex << std::endl;
+        std::cout << "- ilosc krawedzi: " << graphMatrix->getEdgesList().size() << std::endl;
         std::cout << std::endl;
 
         displayGraphs();
@@ -50,12 +51,7 @@ void GenerateRandomGraph::run()
     }
 }
 
-uint32_t GenerateRandomGraph::nonOrientedGraphEdgeCount(const std::vector<Edge>& edgesList)
-{
-    return edgesList.size() / 2;
-}
-
-void GenerateRandomGraph::readVerticiesAndDensity()
+void GenerateOrientedRandomGraph::readVerticiesAndDensity()
 {
     std::cout << "Podaj ilosc wierzcholkow: ";
     std::cin >> vertexCount;
@@ -63,21 +59,7 @@ void GenerateRandomGraph::readVerticiesAndDensity()
     std::cin >> graphDensity;
 }
 
-void GenerateRandomGraph::addEdgeToMatrix(Edge& edge)
-{
-    // for MST graph is not oriented, so edges are added bidirectionaly
-    graphMatrix->addEdge(edge.start, edge.end, edge.weight);
-    graphMatrix->addEdge(edge.end, edge.start, edge.weight);
-}
-
-void GenerateRandomGraph::addEdgeToList(Edge& edge)
-{
-    // for MST graph is not oriented, so edges are added bidirectionaly
-    graphList->addEdge(edge.start, edge.end, edge.weight);
-    graphList->addEdge(edge.end, edge.start, edge.weight);
-}
-
-void GenerateRandomGraph::addEdgeIfPossible(std::vector<Edge>& edgesList, Edge& edge)
+void GenerateOrientedRandomGraph::addEdgeIfPossible(std::vector<Edge>& edgesList, Edge& edge)
 {
     for(auto existingEdge : edgesList)
     {
@@ -87,11 +69,11 @@ void GenerateRandomGraph::addEdgeIfPossible(std::vector<Edge>& edgesList, Edge& 
         }
     }
 
-    addEdgeToMatrix(edge);
-    addEdgeToList(edge);
+    graphMatrix->addEdge(edge.start, edge.end, edge.weight);
+    graphList->addEdge(edge.start, edge.end, edge.weight);
 }
 
-void GenerateRandomGraph::generateSpanningTree()
+void GenerateOrientedRandomGraph::generateSpanningTree()
 {
     // generate list of verticies
     std::vector<uint32_t> verticies(vertexCount);
@@ -113,14 +95,16 @@ void GenerateRandomGraph::generateSpanningTree()
         edge.end = *std::next(it);
         edge.weight = dice.rollUnsignedInt();
 
-        addEdgeToMatrix(edge);
-        addEdgeToList(edge);
+        graphMatrix->addEdge(edge.start, edge.end, edge.weight);
+        graphList->addEdge(edge.start, edge.end, edge.weight);
 
         it = std::next(it);
     }
+
+    startingVertex = *verticies.begin();
 }
 
-void GenerateRandomGraph::fillRestOfTheGraph(uint32_t numberOfExpectedEdges)
+void GenerateOrientedRandomGraph::fillRestOfTheGraph(uint32_t numberOfExpectedEdges)
 {
     // generate list of verticies
     std::vector<uint32_t> verticies(vertexCount);
@@ -132,7 +116,7 @@ void GenerateRandomGraph::fillRestOfTheGraph(uint32_t numberOfExpectedEdges)
 
     auto edgesList = graphList->getEdgesList();
 
-    while(nonOrientedGraphEdgeCount(edgesList) < numberOfExpectedEdges)
+    while(edgesList.size() < numberOfExpectedEdges)
     {
         // generate different random indexes to choose pair of verticies
         uint32_t indexStart, indexEnd;
@@ -154,7 +138,7 @@ void GenerateRandomGraph::fillRestOfTheGraph(uint32_t numberOfExpectedEdges)
     }
 }
 
-void GenerateRandomGraph::displayGraphs()
+void GenerateOrientedRandomGraph::displayGraphs()
 {
     std::cout << "Macierz sasiedztwa:" << std::endl;
     graphMatrix->displayGraph();

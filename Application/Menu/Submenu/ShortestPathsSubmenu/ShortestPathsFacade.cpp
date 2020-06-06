@@ -1,11 +1,12 @@
-#include <Application/Menu/ShortestPathsSubmenu/ShortestPathsFacade.hpp>
+#include <Application/Menu/Submenu/ShortestPathsSubmenu/ShortestPathsFacade.hpp>
 
 
 ShortestPathsFacade::ShortestPathsFacade(const std::string& menuContent)
     : graphMatrix(nullptr)
     , graphList(nullptr)
+    , startingVertex(0)
     , ioHandler(menuContent)
-    , shortestPathsStrategy(graphMatrix, graphList)
+    , shortestPathsStrategy(graphMatrix, graphList, startingVertex)
 { }
 
 void ShortestPathsFacade::printMenu()

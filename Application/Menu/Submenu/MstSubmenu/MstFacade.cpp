@@ -1,4 +1,4 @@
-#include <Application/Menu/MstSubmenu/MstFacade.hpp>
+#include <Application/Menu/Submenu/MstSubmenu/MstFacade.hpp>
 
 
 MstFacade::MstFacade(const std::string& menuContent)

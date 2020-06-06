@@ -1,10 +1,10 @@
 #include <iostream>
-#include <Application/Menu/MstSubmenu/SubActions/ReadGraphFromFile.hpp>
+#include <Application/Menu/Submenu/MstSubmenu/SubActions/ReadNonOrientedGraphFromFile.hpp>
 #include <Graph/Utils/Edge.hpp>
 
 
-ReadGraphFromFile::ReadGraphFromFile(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                                    std::unique_ptr<GraphList>& graphListType)
+ReadNonOrientedGraphFromFile::ReadNonOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
+                                                                                          std::unique_ptr<GraphList>& graphListType)
     : BaseSubAction(actionName, graphMatrixType, graphListType)
     , fileContent()
     , fileName()
@@ -12,7 +12,7 @@ ReadGraphFromFile::ReadGraphFromFile(const std::string& actionName, std::unique_
     , vertexCount(0)
 { }
 
-void ReadGraphFromFile::run()
+void ReadNonOrientedGraphFromFile::run()
 {
     openFile();
     readEdgesCountIfPossible();
@@ -27,7 +27,10 @@ void ReadGraphFromFile::run()
         file.close();
 
 
-        std::cout << "Graf pomyslnie wczytany z pliku. Liczba wezlow: " << vertexCount << std::endl;
+        std::cout << std::endl;
+        std::cout << "Graf pomyslnie wczytany z pliku." << std::endl;
+        std::cout << "Liczba wezlow: " << vertexCount << std::endl;
+        std::cout << "Liczba krawedzi: " << nonOrientedGraphEdgeCount(graphMatrix->getEdgesList()) << std::endl;
         std::cout << std::endl;
 
         displayGraphs();
@@ -39,7 +42,12 @@ void ReadGraphFromFile::run()
     }
 }
 
-void ReadGraphFromFile::openFile()
+uint32_t ReadNonOrientedGraphFromFile::nonOrientedGraphEdgeCount(const std::vector<Edge>& edgesList)
+{
+    return edgesList.size() / 2;
+}
+
+void ReadNonOrientedGraphFromFile::openFile()
 {
     std::cout << "Podaj nazwe pliku: ";
     std::cin >> fileName;
@@ -47,7 +55,7 @@ void ReadGraphFromFile::openFile()
     file.open(fileName);
 }
 
-void ReadGraphFromFile::readEdgesCountIfPossible()
+void ReadNonOrientedGraphFromFile::readEdgesCountIfPossible()
 {
     if(file.is_open())
     {
@@ -56,7 +64,7 @@ void ReadGraphFromFile::readEdgesCountIfPossible()
     }
 }
 
-void ReadGraphFromFile::readVertexCountIfPossible()
+void ReadNonOrientedGraphFromFile::readVertexCountIfPossible()
 {
     if(file.is_open())
     {
@@ -65,7 +73,7 @@ void ReadGraphFromFile::readVertexCountIfPossible()
     }
 }
 
-Edge ReadGraphFromFile::readEdge()
+Edge ReadNonOrientedGraphFromFile::readEdge()
 {
     Edge edge;
 
@@ -79,21 +87,21 @@ Edge ReadGraphFromFile::readEdge()
     return edge;
 }
 
-void ReadGraphFromFile::addEdgeToMatrix(Edge& edge)
+void ReadNonOrientedGraphFromFile::addEdgeToMatrix(Edge& edge)
 {
     // for MST graph is not oriented, so edges are added bidirectionaly
     graphMatrix->addEdge(edge.start, edge.end, edge.weight);
     graphMatrix->addEdge(edge.end, edge.start, edge.weight);
 }
 
-void ReadGraphFromFile::addEdgeToList(Edge& edge)
+void ReadNonOrientedGraphFromFile::addEdgeToList(Edge& edge)
 {
     // for MST graph is not oriented, so edges are added bidirectionaly
     graphList->addEdge(edge.start, edge.end, edge.weight);
     graphList->addEdge(edge.end, edge.start, edge.weight);
 }
 
-void ReadGraphFromFile::fillGraphs()
+void ReadNonOrientedGraphFromFile::fillGraphs()
 {
     for(std::size_t edgeId = 0; edgeId < edgesCount; ++edgeId)
     {
@@ -104,7 +112,7 @@ void ReadGraphFromFile::fillGraphs()
     }
 }
 
-void ReadGraphFromFile::displayGraphs()
+void ReadNonOrientedGraphFromFile::displayGraphs()
 {
     std::cout << "Macierz sasiedztwa:" << std::endl;
     graphMatrix->displayGraph();

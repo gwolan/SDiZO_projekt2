@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstdint>
-#include <Application/Menu/MstSubmenu/MstStrategy.hpp>
+#include <Application/Menu/Submenu/MstSubmenu/MstStrategy.hpp>
 #include <Application/Menu/Actions/ExitProgram.hpp>
-#include <Application/Menu/MstSubmenu/SubActions/ReadGraphFromFile.hpp>
-#include <Application/Menu/MstSubmenu/SubActions/GenerateRandomGraph.hpp>
-#include <Application/Menu/MstSubmenu/SubActions/DisplayGraph.hpp>
+#include <Application/Menu/Submenu/MstSubmenu/SubActions/ReadNonOrientedGraphFromFile.hpp>
+#include <Application/Menu/Submenu/MstSubmenu/SubActions/GenerateNonOrientedRandomGraph.hpp>
+#include <Application/Menu/Submenu/SharedSubActions/DisplayGraph.hpp>
 
 
 MstStrategy::MstStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType, std::unique_ptr<GraphList>& graphListType)
@@ -35,12 +35,12 @@ bool MstStrategy::selectAction(std::string choice)
         break;
         case 1:
         {
-            selectedAction = std::make_unique<ReadGraphFromFile>("Wczytaj graf z pliku", graphMatrix, graphList);
+            selectedAction = std::make_unique<ReadNonOrientedGraphFromFile>("Wczytaj graf z pliku", graphMatrix, graphList);
         }
         break;
         case 2:
         {
-            selectedAction = std::make_unique<GenerateRandomGraph>("Wygeneruj losowy graf", graphMatrix, graphList);
+            selectedAction = std::make_unique<GenerateNonOrientedRandomGraph>("Wygeneruj losowy graf", graphMatrix, graphList);
         }
         break;
         case 3:

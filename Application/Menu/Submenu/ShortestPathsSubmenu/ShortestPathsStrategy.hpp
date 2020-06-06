@@ -17,7 +17,8 @@
 class ShortestPathsStrategy
 {
     public:
-    ShortestPathsStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType, std::unique_ptr<GraphList>& graphListType);
+    ShortestPathsStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType,
+                          std::unique_ptr<GraphList>& graphListType, uint32_t& beginVertex);
 
     void executeAction();
     bool selectAction(std::string choice);
@@ -27,4 +28,5 @@ class ShortestPathsStrategy
     std::unique_ptr<BaseAction> selectedAction;
     std::unique_ptr<GraphMatrix>& graphMatrix;
     std::unique_ptr<GraphList>& graphList;
+    uint32_t& startingVertex;
 };

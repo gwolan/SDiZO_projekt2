@@ -3,20 +3,20 @@
 #include <string>
 #include <memory>
 #include <Application/Menu/IOhandler.hpp>
-#include <Application/Menu/MstSubmenu/MstStrategy.hpp>
+#include <Application/Menu/Submenu/ShortestPathsSubmenu/ShortestPathsStrategy.hpp>
 #include <Graph/GraphMatrix.hpp>
 #include <Graph/GraphList.hpp>
 
 
 // instance of Facade design pattern
-// represents MST submenu
+// represents shortest paths algorithms submenu
 
 
-class MstFacade
+class ShortestPathsFacade
 {
     public:
-    MstFacade(const std::string& menuContent);
-    ~MstFacade() = default;
+    ShortestPathsFacade(const std::string& menuContent);
+    ~ShortestPathsFacade() = default;
 
     void run();
     void printMenu();
@@ -27,6 +27,7 @@ class MstFacade
     private:
     std::unique_ptr<GraphMatrix> graphMatrix;
     std::unique_ptr<GraphList> graphList;
+    uint32_t startingVertex;
     IOhandler ioHandler;
-    MstStrategy mstStrategy;
+    ShortestPathsStrategy shortestPathsStrategy;
 };
