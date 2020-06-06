@@ -3,6 +3,7 @@
 #include <Application/Menu/MstSubmenu/MstStrategy.hpp>
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/MstSubmenu/SubActions/ReadGraphFromFile.hpp>
+#include <Application/Menu/MstSubmenu/SubActions/GenerateRandomGraph.hpp>
 #include <Application/Menu/MstSubmenu/SubActions/DisplayGraph.hpp>
 
 
@@ -35,6 +36,11 @@ bool MstStrategy::selectAction(std::string choice)
         case 1:
         {
             selectedAction = std::make_unique<ReadGraphFromFile>("Wczytaj graf z pliku", graphMatrix, graphList);
+        }
+        break;
+        case 2:
+        {
+            selectedAction = std::make_unique<GenerateRandomGraph>("Wygeneruj losowy graf", graphMatrix, graphList);
         }
         break;
         case 3:
