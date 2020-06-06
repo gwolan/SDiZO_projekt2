@@ -6,6 +6,7 @@ Prim::PathCostAndPath Prim::performPrim(std::unique_ptr<Graph>& graph, uint32_t 
 {
     // reset queue
     edgeQueue = EdgeQueue();
+    visited.clear();
 
     // set flags
     visited.resize(graph->getVertexCount(), false);

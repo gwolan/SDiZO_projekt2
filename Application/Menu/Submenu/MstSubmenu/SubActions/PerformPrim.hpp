@@ -8,6 +8,8 @@
 class PerformPrim : public BaseSubAction
 {
     public:
+    using PrimResults = std::pair<double, Prim::PathCostAndPath>;
+
     PerformPrim(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
                                                std::unique_ptr<Graph>& graphListType);
     ~PerformPrim() = default;
@@ -15,8 +17,10 @@ class PerformPrim : public BaseSubAction
     void run();
 
     private:
-    void displayResults(Prim::PathCostAndPath& result);
+    void displayResults(PerformPrim::PrimResults& result, const std::string graphVersion);
+    PrimResults runPrimForMatrix();
+    PrimResults runPrimForList();
 
-    Prim primMatrix;
+    Prim prim;
     Timer timer;
 };

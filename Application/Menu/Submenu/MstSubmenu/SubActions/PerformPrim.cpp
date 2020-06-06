@@ -5,18 +5,18 @@
 PerformPrim::PerformPrim(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
                                                         std::unique_ptr<Graph>& graphListType)
     : BaseSubAction(actionName, graphMatrixType, graphListType)
-    , primMatrix()
+    , prim()
 { }
 
 void PerformPrim::run()
 {
     if(graphMatrix.get() && graphList.get())
     {
-        timer.start();
-        auto result = primMatrix.performPrim(graphMatrix, 0);
-        timer.stop();
+        PrimResults resultsForMatrix = runPrimForMatrix();
+        PrimResults resultsForList = runPrimForList();
 
-        displayResults(result);
+        displayResults(resultsForMatrix, "Macierz sasiedztwa");
+        displayResults(resultsForList, "Lista sasiedztwa");
     }
     else
     {
@@ -24,13 +24,32 @@ void PerformPrim::run()
     }
 }
 
-void PerformPrim::displayResults(Prim::PathCostAndPath& result)
+PerformPrim::PrimResults PerformPrim::runPrimForMatrix()
 {
-    std::cout << "Czas trwania algorytmu [s]: " << timer.getTime() << std::endl << std::endl;
-    std::cout << "Koszt sumaryczny: " << result.first << std::endl;
+    timer.start();
+    auto result = prim.performPrim(graphMatrix, 0);
+    timer.stop();
+
+    return PrimResults(timer.getTime(), result);
+}
+
+PerformPrim::PrimResults PerformPrim::runPrimForList()
+{
+    timer.start();
+    auto result = prim.performPrim(graphList, 0);
+    timer.stop();
+
+    return PrimResults(timer.getTime(), result);
+}
+
+void PerformPrim::displayResults(PerformPrim::PrimResults& result, const std::string graphVersion)
+{
+    std::cout << std::endl << "Wersja grafu \"" << graphVersion << "\"" << std::endl;
+    std::cout << "Czas trwania algorytmu [s]: " << result.first << std::endl << std::endl;
+    std::cout << "Koszt sumaryczny: " << result.second.first << std::endl;
     std::cout << "Krawedzie: " << std::endl;
 
-    for(auto edge : result.second)
+    for(auto edge : result.second.second)
     {
         std::cout << "{" << edge.start << " -" << edge.weight << "-> " << edge.end << "} ";
     }
