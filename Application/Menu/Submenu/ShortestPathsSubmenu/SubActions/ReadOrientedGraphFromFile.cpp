@@ -1,10 +1,12 @@
 #include <iostream>
 #include <Application/Menu/Submenu/ShortestPathsSubmenu/SubActions/ReadOrientedGraphFromFile.hpp>
 #include <Graph/Utils/Edge.hpp>
+#include <Graph/GraphMatrix.hpp>
+#include <Graph/GraphList.hpp>
 
 
-ReadOrientedGraphFromFile::ReadOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                                                    std::unique_ptr<GraphList>& graphListType, uint32_t& beginVertex)
+ReadOrientedGraphFromFile::ReadOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                                                    std::unique_ptr<Graph>& graphListType, uint32_t& beginVertex)
     : BaseSubAction(actionName, graphMatrixType, graphListType)
     , fileContent()
     , fileName()

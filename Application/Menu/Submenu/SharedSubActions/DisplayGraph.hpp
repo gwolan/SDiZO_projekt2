@@ -6,8 +6,8 @@
 class DisplayGraph : public BaseSubAction
 {
     public:
-    DisplayGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                std::unique_ptr<GraphList>& graphListType);
+    DisplayGraph(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                std::unique_ptr<Graph>& graphListType);
     ~DisplayGraph() = default;
 
     void run();

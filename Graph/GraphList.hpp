@@ -2,21 +2,13 @@
 
 #include <set>
 #include <list>
-#include <vector>
-#include <cstdint>
-#include <utility>
-#include <Graph/Utils/Edge.hpp>
+#include <Graph/Graph.hpp>
 
 
-class GraphList
+class GraphList : public Graph
 {
-    private:
-    using VertexWithWeight = std::pair<uint32_t, int32_t>;
-    using VertexWithNeighbours = std::pair<uint32_t, std::list<VertexWithWeight>>;
-
-
     public:
-    static const int32_t NO_EDGE;
+    using VertexWithNeighbours = std::pair<uint32_t, std::list<Graph::VertexWithWeight>>;
 
     GraphList() = default;
     ~GraphList() = default;

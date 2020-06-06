@@ -7,8 +7,8 @@
 #include <Application/Menu/Submenu/SharedSubActions/DisplayGraph.hpp>
 
 
-ShortestPathsStrategy::ShortestPathsStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                             std::unique_ptr<GraphList>& graphListType, uint32_t& beginVertex)
+ShortestPathsStrategy::ShortestPathsStrategy(std::unique_ptr<Graph>& graphMatrixType,
+                                             std::unique_ptr<Graph>& graphListType, uint32_t& beginVertex)
     : selectedAction(nullptr)
     , graphMatrix(graphMatrixType)
     , graphList(graphListType)

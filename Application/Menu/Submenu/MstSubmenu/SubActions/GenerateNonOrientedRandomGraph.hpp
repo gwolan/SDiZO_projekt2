@@ -8,8 +8,8 @@
 class GenerateNonOrientedRandomGraph : public BaseSubAction
 {
     public:
-    GenerateNonOrientedRandomGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                                  std::unique_ptr<GraphList>& graphListType);
+    GenerateNonOrientedRandomGraph(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                                  std::unique_ptr<Graph>& graphListType);
     ~GenerateNonOrientedRandomGraph() = default;
 
     void run();

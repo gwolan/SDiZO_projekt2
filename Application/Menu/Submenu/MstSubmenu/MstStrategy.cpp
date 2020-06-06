@@ -8,7 +8,7 @@
 #include <Application/Menu/Submenu/SharedSubActions/DisplayGraph.hpp>
 
 
-MstStrategy::MstStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType, std::unique_ptr<GraphList>& graphListType)
+MstStrategy::MstStrategy(std::unique_ptr<Graph>& graphMatrixType, std::unique_ptr<Graph>& graphListType)
     : selectedAction(nullptr)
     , graphMatrix(graphMatrixType)
     , graphList(graphListType)

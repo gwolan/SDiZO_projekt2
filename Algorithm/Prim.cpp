@@ -1,8 +1,8 @@
 #include <iostream>
-#include <Algorithm/PrimMatrix.hpp>
+#include <Algorithm/Prim.hpp>
 
 
-PrimMatrix::PathCostAndPath PrimMatrix::performPrimOnMatrix(std::unique_ptr<GraphMatrix>& graph, uint32_t startingVertex)
+Prim::PathCostAndPath Prim::performPrim(std::unique_ptr<Graph>& graph, uint32_t startingVertex)
 {
     // reset queue
     edgeQueue = EdgeQueue();
@@ -20,7 +20,7 @@ PrimMatrix::PathCostAndPath PrimMatrix::performPrimOnMatrix(std::unique_ptr<Grap
     return result;
 }
 
-PrimMatrix::PathCostAndPath PrimMatrix::createMst(std::unique_ptr<GraphMatrix>& graph)
+Prim::PathCostAndPath Prim::createMst(std::unique_ptr<Graph>& graph)
 {
     PathCostAndPath result;
 
@@ -49,7 +49,7 @@ PrimMatrix::PathCostAndPath PrimMatrix::createMst(std::unique_ptr<GraphMatrix>& 
     return result;
 }
 
-void PrimMatrix::addEdgesToQueue(const std::vector<Edge>& edges)
+void Prim::addEdgesToQueue(const std::vector<Edge>& edges)
 {
     for(auto& edge : edges)
     {

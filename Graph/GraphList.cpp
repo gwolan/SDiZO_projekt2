@@ -5,23 +5,21 @@
 #include <Graph/Utils/EdgeEndVertexFinder.hpp>
 
 
-const int32_t GraphList::NO_EDGE = -1;
-
 void GraphList::addEdge(uint32_t startingVertex, uint32_t endVertex, uint32_t weight)
 {
     auto it = std::find_if(graphList.begin(), graphList.end(), VertexOnListFinder(startingVertex));
 
     if(it == graphList.end())
     {
-        VertexWithNeighbours newConnection(startingVertex, std::list<VertexWithWeight>());
-        newConnection.second.push_back(VertexWithWeight(endVertex, weight));
+        VertexWithNeighbours newConnection(startingVertex, std::list<Graph::VertexWithWeight>());
+        newConnection.second.push_back(Graph::VertexWithWeight(endVertex, weight));
 
         graphList.push_back(newConnection);
         verticies.insert(startingVertex);
     }
     else
     {
-        it->second.push_back(VertexWithWeight(endVertex, weight));
+        it->second.push_back(Graph::VertexWithWeight(endVertex, weight));
     }
 
     verticies.insert(endVertex);

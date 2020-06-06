@@ -6,10 +6,12 @@
 #include <Application/Menu/Submenu/MstSubmenu/SubActions/GenerateNonOrientedRandomGraph.hpp>
 #include <Graph/Utils/GraphCharacteristicsCalculator.hpp>
 #include <Miscellanous/Dice.hpp>
+#include <Graph/GraphMatrix.hpp>
+#include <Graph/GraphList.hpp>
 
 
-GenerateNonOrientedRandomGraph::GenerateNonOrientedRandomGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                                                              std::unique_ptr<GraphList>& graphListType)
+GenerateNonOrientedRandomGraph::GenerateNonOrientedRandomGraph(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                                                              std::unique_ptr<Graph>& graphListType)
     : BaseSubAction(actionName, graphMatrixType, graphListType)
     , vertexCount(0)
     , graphDensity(0.0)

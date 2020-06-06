@@ -2,8 +2,8 @@
 #include <Application/Menu/Submenu/MstSubmenu/SubActions/PerformPrim.hpp>
 
 
-PerformPrim::PerformPrim(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                        std::unique_ptr<GraphList>& graphListType)
+PerformPrim::PerformPrim(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                        std::unique_ptr<Graph>& graphListType)
     : BaseSubAction(actionName, graphMatrixType, graphListType)
     , primMatrix()
 { }
@@ -13,7 +13,7 @@ void PerformPrim::run()
     if(graphMatrix.get() && graphList.get())
     {
         timer.start();
-        auto result = primMatrix.performPrimOnMatrix(graphMatrix, 0);
+        auto result = primMatrix.performPrim(graphMatrix, 0);
         timer.stop();
 
         displayResults(result);
@@ -24,7 +24,7 @@ void PerformPrim::run()
     }
 }
 
-void PerformPrim::displayResults(PrimMatrix::PathCostAndPath& result)
+void PerformPrim::displayResults(Prim::PathCostAndPath& result)
 {
     std::cout << "Czas trwania algorytmu [s]: " << timer.getTime() << std::endl << std::endl;
     std::cout << "Koszt sumaryczny: " << result.first << std::endl;

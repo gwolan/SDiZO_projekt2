@@ -7,8 +7,8 @@
 class ReadNonOrientedGraphFromFile : public BaseSubAction
 {
     public:
-    ReadNonOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                                std::unique_ptr<GraphList>& graphListType);
+    ReadNonOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                                std::unique_ptr<Graph>& graphListType);
     ~ReadNonOrientedGraphFromFile() = default;
 
     void run();

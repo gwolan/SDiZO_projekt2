@@ -4,8 +4,7 @@
 #include <memory>
 #include <Application/Menu/IOhandler.hpp>
 #include <Application/Menu/Submenu/ShortestPathsSubmenu/ShortestPathsStrategy.hpp>
-#include <Graph/GraphMatrix.hpp>
-#include <Graph/GraphList.hpp>
+#include <Graph/Graph.hpp>
 
 
 // instance of Facade design pattern
@@ -25,8 +24,8 @@ class ShortestPathsFacade
 
 
     private:
-    std::unique_ptr<GraphMatrix> graphMatrix;
-    std::unique_ptr<GraphList> graphList;
+    std::unique_ptr<Graph> graphMatrix;
+    std::unique_ptr<Graph> graphList;
     uint32_t startingVertex;
     IOhandler ioHandler;
     ShortestPathsStrategy shortestPathsStrategy;

@@ -8,8 +8,8 @@
 class GenerateOrientedRandomGraph : public BaseSubAction
 {
     public:
-    GenerateOrientedRandomGraph(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                               std::unique_ptr<GraphList>& graphListType, uint32_t& beginVertex);
+    GenerateOrientedRandomGraph(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                               std::unique_ptr<Graph>& graphListType, uint32_t& beginVertex);
     ~GenerateOrientedRandomGraph() = default;
 
     void run();

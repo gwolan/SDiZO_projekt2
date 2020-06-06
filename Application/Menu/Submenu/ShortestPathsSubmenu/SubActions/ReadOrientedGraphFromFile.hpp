@@ -7,8 +7,8 @@
 class ReadOrientedGraphFromFile : public BaseSubAction
 {
     public:
-    ReadOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                             std::unique_ptr<GraphList>& graphListType, uint32_t& beginVertex);
+    ReadOrientedGraphFromFile(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                             std::unique_ptr<Graph>& graphListType, uint32_t& beginVertex);
     ~ReadOrientedGraphFromFile() = default;
 
     void run();

@@ -2,8 +2,7 @@
 
 #include <memory>
 #include <Application/Menu/Actions/BaseAction.hpp>
-#include <Graph/GraphMatrix.hpp>
-#include <Graph/GraphList.hpp>
+#include <Graph/Graph.hpp>
 
 
 // instance of Strategy desing pattern
@@ -17,7 +16,7 @@
 class MstStrategy
 {
     public:
-    MstStrategy(std::unique_ptr<GraphMatrix>& graphMatrixType, std::unique_ptr<GraphList>& graphListType);
+    MstStrategy(std::unique_ptr<Graph>& graphMatrixType, std::unique_ptr<Graph>& graphListType);
 
     void executeAction();
     bool selectAction(std::string choice);
@@ -25,6 +24,6 @@ class MstStrategy
 
     public:
     std::unique_ptr<BaseAction> selectedAction;
-    std::unique_ptr<GraphMatrix>& graphMatrix;
-    std::unique_ptr<GraphList>& graphList;
+    std::unique_ptr<Graph>& graphMatrix;
+    std::unique_ptr<Graph>& graphList;
 };

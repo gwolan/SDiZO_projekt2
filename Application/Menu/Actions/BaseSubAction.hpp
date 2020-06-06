@@ -1,8 +1,7 @@
 #pragma once
 
 #include <Application/Menu/Actions/BaseAction.hpp>
-#include <Graph/GraphMatrix.hpp>
-#include <Graph/GraphList.hpp>
+#include <Graph/Graph.hpp>
 
 
 // Abstract SubAction class for polymorphic needs
@@ -11,8 +10,8 @@
 class BaseSubAction : public BaseAction
 {
     public:
-    BaseSubAction(const std::string& actionName, std::unique_ptr<GraphMatrix>& graphMatrixType,
-                                                 std::unique_ptr<GraphList>& graphListType);
+    BaseSubAction(const std::string& actionName, std::unique_ptr<Graph>& graphMatrixType,
+                                                 std::unique_ptr<Graph>& graphListType);
     virtual ~BaseSubAction() = default;
 
     virtual void run() = 0;
@@ -20,6 +19,6 @@ class BaseSubAction : public BaseAction
 
     protected:
     std::string name;
-    std::unique_ptr<GraphMatrix>& graphMatrix;
-    std::unique_ptr<GraphList>& graphList;
+    std::unique_ptr<Graph>& graphMatrix;
+    std::unique_ptr<Graph>& graphList;
 };

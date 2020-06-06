@@ -2,8 +2,6 @@
 #include <Graph/GraphMatrix.hpp>
 
 
-const int32_t GraphMatrix::NO_EDGE = -1;
-
 GraphMatrix::GraphMatrix(uint32_t verticies)
     : vertexCount(verticies)
     , graphMatrix(verticies, std::vector<int32_t>(verticies, NO_EDGE))
@@ -19,19 +17,19 @@ bool GraphMatrix::areCoordsValid(uint32_t row, uint32_t column)
     return true;
 }
 
-void GraphMatrix::addEdge(uint32_t row, uint32_t column, uint32_t weight)
+void GraphMatrix::addEdge(uint32_t startingVertex, uint32_t endVertex, uint32_t weight)
 {
-    if(areCoordsValid(row, column))
+    if(areCoordsValid(startingVertex, endVertex))
     {
-        graphMatrix[row][column] = weight;
+        graphMatrix[startingVertex][endVertex] = weight;
     }
 }
 
-int32_t GraphMatrix::getWeight(uint32_t row, uint32_t column)
+int32_t GraphMatrix::getWeight(uint32_t startingVertex, uint32_t endVertex)
 {
-    if(areCoordsValid(row, column))
+    if(areCoordsValid(startingVertex, endVertex))
     {
-        return graphMatrix[row][column];
+        return graphMatrix[startingVertex][endVertex];
     }
     else
     {
