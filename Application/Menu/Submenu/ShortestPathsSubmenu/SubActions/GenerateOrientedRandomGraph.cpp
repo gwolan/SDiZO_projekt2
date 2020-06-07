@@ -71,6 +71,7 @@ void GenerateOrientedRandomGraph::addEdgeIfPossible(std::vector<Edge>& edgesList
         }
     }
 
+    edgesList.push_back(edge);
     graphMatrix->addEdge(edge.start, edge.end, edge.weight);
     graphList->addEdge(edge.start, edge.end, edge.weight);
 }
@@ -136,7 +137,6 @@ void GenerateOrientedRandomGraph::fillRestOfTheGraph(uint32_t numberOfExpectedEd
         edge.weight = weightDice.rollUnsignedInt();
 
         addEdgeIfPossible(edgesList, edge);
-        edgesList = graphList->getEdgesList();
     }
 }
 

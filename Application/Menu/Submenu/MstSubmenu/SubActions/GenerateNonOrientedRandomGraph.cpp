@@ -88,6 +88,13 @@ void GenerateNonOrientedRandomGraph::addEdgeIfPossible(std::vector<Edge>& edgesL
         }
     }
 
+    Edge adjacentEdge;
+    adjacentEdge.start = edge.end;
+    adjacentEdge.end = edge.start;
+    adjacentEdge.weight = edge.weight;
+
+    edgesList.push_back(edge);
+    edgesList.push_back(adjacentEdge);
     addEdgeToMatrix(edge);
     addEdgeToList(edge);
 }
@@ -151,7 +158,6 @@ void GenerateNonOrientedRandomGraph::fillRestOfTheGraph(uint32_t numberOfExpecte
         edge.weight = weightDice.rollUnsignedInt();
 
         addEdgeIfPossible(edgesList, edge);
-        edgesList = graphList->getEdgesList();
     }
 }
 
