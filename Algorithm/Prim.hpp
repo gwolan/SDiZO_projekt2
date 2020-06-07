@@ -6,7 +6,6 @@
 #include <vector>
 #include <memory>
 #include <Graph/Graph.hpp>
-#include <Graph/Utils/Edge.hpp>
 #include <Graph/Utils/EdgeComparator.hpp>
 
 

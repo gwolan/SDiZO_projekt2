@@ -4,6 +4,7 @@
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/Submenu/ShortestPathsSubmenu/SubActions/ReadOrientedGraphFromFile.hpp>
 #include <Application/Menu/Submenu/ShortestPathsSubmenu/SubActions/GenerateOrientedRandomGraph.hpp>
+#include <Application/Menu/Submenu/ShortestPathsSubmenu/SubActions/PerformDijkstra.hpp>
 #include <Application/Menu/Submenu/SharedSubActions/DisplayGraph.hpp>
 
 
@@ -48,6 +49,11 @@ bool ShortestPathsStrategy::selectAction(std::string choice)
         case 3:
         {
             selectedAction = std::make_unique<DisplayGraph>("Wyswietl graf", graphMatrix, graphList);
+        }
+        break;
+        case 4:
+        {
+            selectedAction = std::make_unique<PerformDijkstra>("Wykonaj algorytm Dijkstry", graphMatrix, graphList, startingVertex);
         }
         break;
         default:

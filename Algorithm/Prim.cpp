@@ -1,4 +1,3 @@
-#include <iostream>
 #include <Algorithm/Prim.hpp>
 
 

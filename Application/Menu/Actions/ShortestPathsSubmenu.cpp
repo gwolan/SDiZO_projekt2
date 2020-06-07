@@ -13,7 +13,6 @@ void ShortestPathsSubmenu::run()
                             std::string("2. Wygeneruj losowy graf.\n") +
                             std::string("3. Wyswietl graf.\n") +
                             std::string("4. Wykonaj algorytm Dijkstry.\n") +
-                            std::string("5. Wykonaj algorytm Forda-Bellmana.\n") +
                             std::string("0. Powrot.\n\n") +
                             std::string("Wybor: "));
 
