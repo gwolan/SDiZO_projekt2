@@ -19,6 +19,7 @@ int main()
                             std::string("Menu:\n") +
                             std::string("1. Algorytm znajdowania MST w grafie.\n") +
                             std::string("2. Algorytm znajdowania najkrotszej sciezki w grafie.\n") +
+                            std::string("3. Pomiary.\n") +
                             std::string("0. Wyjscie.\n\n") +
                             std::string("Wybor: "));
 

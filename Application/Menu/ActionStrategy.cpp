@@ -4,6 +4,7 @@
 #include <Application/Menu/Actions/ExitProgram.hpp>
 #include <Application/Menu/Actions/MstSubmenu.hpp>
 #include <Application/Menu/Actions/ShortestPathsSubmenu.hpp>
+#include <Application/Menu/Actions/PerformMeasurements.hpp>
 
 
 ActionStrategy::ActionStrategy()
@@ -27,7 +28,7 @@ bool ActionStrategy::selectAction(std::string choice)
     {
         case 0:
         {
-            selectedAction = std::make_unique<ExitProgram>("Wyjście z programu");
+            selectedAction = std::make_unique<ExitProgram>("Wyjscie z programu");
         }
         break;
         case 1:
@@ -38,6 +39,11 @@ bool ActionStrategy::selectAction(std::string choice)
         case 2:
         {
             selectedAction = std::make_unique<ShortestPathsSubmenu>("Algorytmy znajdowania najkrotszych sciezek w grafie");
+        }
+        break;
+        case 3:
+        {
+            selectedAction = std::make_unique<PerformMeasurements>("Wykonanie pomiarow czasowych");
         }
         break;
         default:
