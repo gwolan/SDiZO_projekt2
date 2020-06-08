@@ -13,7 +13,7 @@ PerformMeasurements::PerformMeasurements(const std::string& actionName)
     : BaseAction(actionName)
     , generationsCount(100)
     , graphTypes(2)
-    , instanceSizes( { 10, 30, 50, 70, 90, 110, 130 } )
+    , instanceSizes( { 10, 15, 25, 50, 90, 130, 150 } )
     , densities( { 20.0, 60.0, 99.0 } )
 { }
 
